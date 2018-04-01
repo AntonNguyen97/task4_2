@@ -16,10 +16,9 @@ diff ntp.conf ntp2.conf > /var/mail/root
 if [ "$difference" -eq 0 ]; then
            echo "No changes at ntp.conf" > /var/mail/root
 else
-           rm ntp.conf
            echo "Notice: ntp.conf was changed. Calculated difference: "
            diff -u0 /etc/ntp2.conf /etc/ntp.conf
-           cp ntp2.conf ntp.conf
+           cp -f ntp2.conf ntp.conf
            service ntp restart
 fi
 
