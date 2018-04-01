@@ -12,12 +12,12 @@ fi
 difference=`diff ntp2.conf ntp.conf | wc -l `
 
 diff -u0 ntp.conf ntp2.conf > /var/mail/root
-
+diff=`diff -u0 ntp2.conf ntp.conf`
 if [ "$difference" -eq 0 ]; then
            echo "No changes at ntp.conf" > /var/mail/root
 else
-           echo "Notice: ntp.conf was changed. Calculated difference: "
-           diff -u0 ntp2.conf ntp.conf
+           echo "Notice: ntp.conf was changed. Calculated difference: $diff"
+           echo "$diff"
            cp -f ntp2.conf ntp.conf
            service ntp restart
 fi
