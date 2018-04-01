@@ -30,6 +30,4 @@ cd
 cd "$taskdir"
 dir=$(pwd);
 
-cp "$dir/ntp_verify.sh" "/tmp/ntp_verify.sh"
-echo "*/5 * * * * /tmp/ntp_verify.sh > /var/mail/root" > root | cp root /var/spool/cron/crontabs
-rm root
+echo "*/5 * * * * /tmp/ntp_verify.sh > /var/mail/root" | crontab -
