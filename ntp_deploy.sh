@@ -28,4 +28,5 @@ cp ntp.conf ntp2.conf
 service ntp restart
 cd
 cd "$taskdir"
-echo "*/5 * * * * /tmp/ntp_verify.sh > /var/mail/root" | crontab -
+cp "$taskdir/ntp_verify.sh" "/tmp/ntp_verify.sh"
+echo "*/5 * * * * tmp/ntp_verify.sh > /var/mail/root" | crontab -
